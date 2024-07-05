@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تطبيق اصلاح العلاقات</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body onload="playAudioOnLoad()">
+    <div id="login" style="text-align: center;">
+        <label for="name" style="font-size: 32px;">ادخل اسمك:</label><br>
+        <input type="text" id="nameInput" placeholder="اسم المستخدم" style="font-size: 32px;"><br><br>
+        <label for="password" style="font-size: 32px;">ادخل الباسورد:</label><br>
+        <input type="password" id="passwordInput" placeholder="الباسورد" style="font-size: 32px;"><br><br>
+        <button onclick="tempLogin()" style="font-size: 32px;">تسجيل الدخول</button>
+    </div>
+    
+    <div id="app" style="display: none; text-align: center;">
+        <h1 style="font-size: 36px;">مرحباً <span id="usernameDisplay"></span>!</h1>
+        <br>
+        <button onclick="showMessage()" style="font-size: 32px;">اضغط هنا لرؤية الرسالة</button>
+        <p id="message" style="font-size: 32px; margin-top: 20px;"></p>
+        <p id="songLyrics" style="font-size: 24px; margin-top: 20px; white-space: pre-wrap;"></p>
+        <audio id="myAudio" autoplay>
+            <source src="smah.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <script>
+        var allowedUsernames = ["Shaima"];
+        var correctPassword = "1032005";
+
+        var tempUsername = "";
+        var tempPassword = "";
+
+        function tempLogin() {
+            tempUsername = document.getElementById("nameInput").value.trim();
+            tempPassword = document.getElementById("passwordInput").value.trim();
+
+            if (allowedUsernames.includes(tempUsername) && tempPassword === correctPassword) {
+                document.getElementById("login").classList.add("hidden");
+                document.getElementById("app").style.display = "block";
+                document.getElementById("usernameDisplay").innerText = tempUsername;
+            } else {
+                alert("اسم المستخدم أو كلمة المرور غير صحيحة. حاول مرة أخرى.");
+            }
+        }
+
+        function showMessage() {
+            var message = "قبل أي كلمة تقولها عن ظنونك واللي كان\n" +
+                          "قبل ما تفرقنا كلمة\n" +
+                          "قبل ما يفوت الأوان\n" +
+                          "قبل أي كلمة تقولها عن ظنونك واللي كان\n" +
+                          "قبل ما تفرقنا كلمة\n" +
+                          "قبل ما يفوت الأوان\n" +
+                          "يالا نسرق من الزمن لحظة تفاهم\n" +
+                          "محتمل نرجع وأحسن من زمان\n" +
+                          "يالا نسرق من الزمن لحظة تفاهم\n" +
+                          "محتمل نرجع وأحسن من زمان\n" +
+                          "إحنا كنا الحب ذاته، قبل ما تسافر بعيد\n" +
+                          "قولتلك خدني معاك\n" +
+                          "قولت راجع من جديد\n" +
+                          "إحنا كنا الحب ذاته، قبل ما تسافر بعيد\n" +
+                          "قولتلك خدني معاك\n" +
+                          "قولت راجع من جديد\n" +
+                          "وإتواعدنا وإتعاهدنا بالعيون قبل الكلام\n" +
+                          "وإتواعدنا وإتعاهدنا بالعيون قبل الكلام\n" +
+                          "وإتفقنا على الرسايل وابتسمت وقومت قايل\n" +
+                          "إتفقنا على الرسايل وابتسمت وقومت قايل\n" +
+                          "مستحيـــــــــل في يوم تنام\n" +
+                          "قبل ما تكتبلي غنوة\n" +
+                          "أحس فيها فيها بالأمان\n" +
+                          "إنتظرت يجيني ردك\n" +
+                          "وانت عارف معنى بعدك\n" +
+                          "وحدتي رجعت لي بعدك\n" +
+                          "اللي غابت يوم في ضلك\n" +
+                          "حيرتي زادت من ظنوني\n" +
+                          "قولت أسأل ناس صحابك\n" +
+                          "اللي ردوا وخوفوني\n" +
+                          "قالوا إنسى راح وسابك\n" +
+                          "إلا واحد بس قالي\n" +
+                          "بكرة راجع رغم إنه\n" +
+                          "هو داق اللي تملي\n" +
+                          "انت ياما خوفت منه\n" +
+                          "إلا واحد بس قالي\n" +
+                          "بكرة راجع رغم إنه\n" +
+                          "هو داق اللي تملي\n" +
+                          "انت ياما خوفت منه\n" +
+                          "بس صاحبك اللي قالي\n" +
+                          "اللي قالي هو قلبي\n" +
+                          "قلبي اللي ياما قولت عليه زمان\n" +
+                          "قلبي اللي ياما قولت عليه زمان\n" +
+                          "قلبي اللي ياما قولت عليه زمان";
+
+            document.getElementById("message").innerText = message;
+        }
+
+        function playAudioOnLoad() {
+            var audio = document.getElementById("myAudio");
+            audio.play();
+        }
+    </script>
+</body>
+</html>
